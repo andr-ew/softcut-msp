@@ -13,7 +13,7 @@ building
 
 -   build the xcode project.
 
--   this should create `max-sdk-8.0.3/externals/softcut~.mxo`; copy this somewhere your Max install can find it
+-   this should create `max-sdk-8.0.3/externals/softcut~.mxo`; make sure your Max install can find it
 
 -   run the test patch at `max-sdk-8.0.3/source/audio/softcut~/test.maxpat`
 

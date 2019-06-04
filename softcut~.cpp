@@ -43,69 +43,88 @@ void softcut_dblclick(t_softcut *x);
 ///////////
 /// softcut methods
 void softcut_filter_fc(t_softcut *sc, double val) {
+    post("softcut_filter_fc( %f )", val);
     sc->scv.setFilterFc(val);
 }
 void softcut_filter_fc_mod(t_softcut *sc, double val) {
+    post("softcut_filter_fc_mod( %f )", val);
     sc->scv.setFilterFcMod(val);
 }
 void softcut_filter_rq(t_softcut *sc, double val) {
+    post("softcut_filter_rq( %f )", val);
     sc->scv.setFilterRq(val);
 }
 void softcut_filter_lp(t_softcut *sc, double val) {
+    post("softcut_filter_lp( %f )", val);
     sc->scv.setFilterLp(val);
 }
 void softcut_filter_hp(t_softcut *sc, double val) {
+    post("softcut_filter_hp( %f )", val);
     sc->scv.setFilterHp(val);
 }
 void softcut_filter_bp(t_softcut *sc, double val) {
+    post("softcut_filter_bp( %f )", val);
     sc->scv.setFilterBp(val);
 }
 void softcut_filter_br(t_softcut *sc, double val) {
+    post("softcut_filter_br( %f )", val);
     sc->scv.setFilterBr(val);
 }
 void softcut_filter_dry(t_softcut *sc, double val) {
+    post("softcut_filter_dry( %f )", val);
     sc->scv.setFilterDry(val);
 }
 void softcut_rate(t_softcut *sc, double val) {
-    post("rate %f", val);
+    post("softcut_rate( %f )", val);
     sc->scv.setRate(val);
 }
 void softcut_play(t_softcut *sc, double val) {
-    post("play %f", val);
+    post("softcut_play %f", val);
     sc->scv.setPlayFlag(val > 0.f);
 }
 
 void softcut_position(t_softcut *sc, double val) {
+    post("softcut_position( %f )", val);
     sc->scv.cutToPos(val);
 }
 void softcut_fade_time(t_softcut *sc, double val) {
+    post("softcut_fade_time( %f )", val);
     sc->scv.setFadeTime(val);
 }
 void softcut_loop(t_softcut *sc, double val) {
+    post("softcut_loop( %f )", val);
     sc->scv.setLoopFlag(val);
 }
 void softcut_loop_start(t_softcut *sc, double val) {
+    post("softcut_loop_start( %f )", val);
     sc->scv.setLoopStart(val);
 }
 void softcut_loop_end(t_softcut *sc, double val) {
+    post("softcut_loop_end( %f )", val);
     sc->scv.setLoopEnd(val);
 }
 void softcut_rec(t_softcut *sc, double val) {
+    post("softcut_rec( %f )", val);
     sc->scv.setRecFlag(val > 0.f);
 }
 void softcut_rec_level(t_softcut *sc, double val) {
+    post("softcut_rec_level( %f )", val);
     sc->scv.setRecLevel(val);
 }
 void softcut_pre_level(t_softcut *sc, double val) {
+    post("softcut_pre_level( %f )", val);
     sc->scv.setPreLevel(val);
 }
 void softcut_rec_offset(t_softcut *sc, double val) {
+    post("softcut_rec_offset( %f )", val);
     sc->scv.setRecOffset(val);
 }
 void softcut_level_slew_time(t_softcut *sc, double val) {
+    post("softcut_level_slew_time( %f )", val);
     sc->scv.setLevelSlewTime(val);
 }
 void softcut_rate_slew_time(t_softcut *sc, double val) {
+    post("softcut_rate_slew_time( %f )", val);
     sc->scv.setRateSlewTime(val);
 }
 

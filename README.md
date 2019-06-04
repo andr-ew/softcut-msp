@@ -4,10 +4,7 @@ Max/MSP port of "softcut" audio processor (from monome:norns project)
 
 # building
 
-- 1. download Max SDK from cycling '74:
-https://cycling74.com/downloads/sdk
-
-this project was buit using the 8.0.3 version of the SDK.
+- 1. download Max SDK from cycling '74: [https://cycling74.com/downloads/sdk]. this project was buit using the 8.0.3 version of the SDK.
 
 - 2. clone this repo to `max-sdk-8.0.3/source/audio/softcut~`
 

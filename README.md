@@ -15,6 +15,6 @@ building
 
 -   this should create `max-sdk-8.0.3/externals/softcut~.mxo`; make sure your Max install can find it
 
--   run the test patch at `max-sdk-8.0.3/source/audio/softcut~/test.maxpat`
+-   run the test patch at `max-sdk-8.0.3/source/audio/softcut~/softcut-test.maxpat`
 
  

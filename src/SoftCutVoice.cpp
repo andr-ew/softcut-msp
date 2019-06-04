@@ -104,7 +104,6 @@ void SoftCutVoice::setRecFlag(bool val) {
     recFlag = val;
 }
 
-
 void SoftCutVoice::setPlayFlag(bool val) {
     playFlag = val;
 }

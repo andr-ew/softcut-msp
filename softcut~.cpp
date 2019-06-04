@@ -66,10 +66,12 @@ void softcut_filter_br(t_softcut *sc, float val) {
 void softcut_filter_dry(t_softcut *sc, float val) { 
     sc->scv.setFilterDry(val);
 }
-void softcut_rate(t_softcut *sc, float val) { 
+void softcut_rate(t_softcut *sc, float val) {
+    post("rate %f", val);
     sc->scv.setRate(val);
 }
-void softcut_play(t_softcut *sc, float val) { 
+void softcut_play(t_softcut *sc, float val) {
+    post("play %f", val);
     sc->scv.setPlayFlag(val > 0.f);
 }
 void softcut_position(t_softcut *sc, float val) { 
@@ -113,12 +115,14 @@ void ext_main(void *r)
     // declare class: single string argument (buffer reference)
     t_class *c = class_new("softcut~", (method)softcut_new, (method)softcut_free, sizeof(t_softcut), 0L, A_SYM, 0);
     
-    //--- standard methods
+    //--- standard max smethods
     class_addmethod(c, (method)softcut_dsp64, "dsp64", A_CANT, 0);
-    class_addmethod(c, (method)softcut_set, "set", A_SYM, 0);
     class_addmethod(c, (method)softcut_assist, "assist", A_CANT, 0);
     class_addmethod(c, (method)softcut_dblclick, "dblclick", A_CANT, 0);
     class_addmethod(c, (method)softcut_notify, "notify", A_CANT, 0);
+    // set buffer
+    class_addmethod(c, (method)softcut_set, "set", A_SYM, 0);
+    
     
     //--- softcut methods
     class_addmethod(c, (method)softcut_filter_fc, "filter_fc", A_FLOAT, 0);
@@ -142,7 +146,7 @@ void ext_main(void *r)
     class_addmethod(c, (method)softcut_rec_offset, "rec_offset", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_level_slew_time, "level_slew_time", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_rate_slew_time, "rate_slew_time", A_FLOAT, 0);
-    
+    class_dspinit(c);
     class_register(CLASS_BOX, c);
     softcut_class = c;
 }

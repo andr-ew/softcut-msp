@@ -18,7 +18,7 @@
 
 using softcut::FadeCurves;
 
-#define SOFTCUT_IO_BUF_FRAMES 8192
+#define SOFTCUT_IO_BUF_FRAMES 1024
 
 typedef struct _softcut {
     t_pxobject l_obj;
@@ -135,17 +135,6 @@ static t_class *softcut_class;
 
 void ext_main(void *r)
 {
-    /// FIXME: the fade curve data is static, shared among all instances
-    // this is fine in the context of norns,
-    /// but here each instance should probably own a copy
-    FadeCurves::setPreShape(FadeCurves::Shape::Linear);
-    FadeCurves::setRecShape(FadeCurves::Shape::Raised);
-    FadeCurves::setMinPreWindowFrames(0);
-    FadeCurves::setMinRecDelayFrames(0);
-    FadeCurves::setPreWindowRatio(1.f/8);
-    FadeCurves::setRecDelayRatio(1.f/(8*16));
-    ///
-    
     // declare class: single string argument (buffer reference)
     t_class *c = class_new("softcut~", (method)softcut_new, (method)softcut_free, sizeof(t_softcut), 0L, A_SYM, 0);
     
@@ -189,22 +178,29 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
 {
     t_double	*in = ins[0];
     t_double	*out = outs[0];
+    
     int			n = sampleframes;
     t_float		*tab;
-    t_buffer_obj	*buffer = buffer_ref_getobject(x->l_buffer_reference);
+    t_buffer_obj *buffer = buffer_ref_getobject(x->l_buffer_reference);
     
     tab = buffer_locksamples(buffer);
     if (!tab) {
         goto zero;
     }
+
     // FIXME? assuming buffer is mono.
-    // dunno if multichannel MSP bufs are interleaved or not.
-    // if they are, this will be messed up and it's probably best to have a channel selection
     x->scv.setBuffer(tab, buffer_getframecount(buffer));
-    
+
+//#if 1
     for (int i=0; i<n; ++i) { x->inBuf[i] = (float)(*in++); }
     x->scv.processBlockMono(x->inBuf, x->outBuf, n);
     for (int i=0; i<n; ++i) { *out++ = (double)(x->outBuf[i]); }
+//#else
+//    /// testing... ok, skip the conversion?
+//    // in that case we probably want to zero the output first
+//    for (int i=0; i<n; ++i) { out[i] = 0.0; }
+//    x->scv.processBlockMono(src, dst, n);
+//#endif
     
     buffer_unlocksamples(buffer);
     
@@ -257,6 +253,22 @@ void *softcut_new(t_symbol *s, long chan)
     outlet_new((t_object *)x, "signal");
     // set buffer reference using argument
     softcut_set(x, s);
+    
+    /// FIXME: the fade curve data is static, shared among all instances
+    // this is fine in the context of norns,
+    /// but here each instance should probably own a copy
+    /// in any case, this is the wrong place to set these magic numbers!
+    FadeCurves::setPreShape(FadeCurves::Shape::Linear);
+    FadeCurves::setRecShape(FadeCurves::Shape::Raised);
+    FadeCurves::setMinPreWindowFrames(0);
+    FadeCurves::setMinRecDelayFrames(0);
+    FadeCurves::setPreWindowRatio(1.f/8);
+    FadeCurves::setRecDelayRatio(1.f/(8*16));
+    
+    // there should be a small negative offset, putting rec head behind play head
+    // shouldbe just big enough to keep resampling windows apart
+    x->scv.setRecOffset(-0.0004);
+    
     return (x);
 }
 

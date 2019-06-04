@@ -18,7 +18,7 @@ SoftCutHead::SoftCutHead() {
 }
 
 void SoftCutHead::init() {
-    sr = 44100.f;
+    sr = 48000.f;
     start = 0.f;
     end = 0.f;
     active = 0;
@@ -184,7 +184,7 @@ void SoftCutHead::setSampleRate(float sr_) {
 }
 
 sample_t SoftCutHead::mixFade(sample_t x, sample_t y, float a, float b) {
-        return x * sinf(a * (float)M_PI_2) + y * sinf(b * (float) M_PI_2);
+    return x * sinf(a * (float)M_PI_2) + y * sinf(b * (float) M_PI_2);
 }
 
 void SoftCutHead::setRec(float x) {

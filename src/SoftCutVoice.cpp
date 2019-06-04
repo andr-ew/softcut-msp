@@ -53,7 +53,11 @@ void SoftCutVoice:: processBlockMono(const float *in, float *out, int numFrames)
 
     float x;
     for(int i=0; i<numFrames; ++i) {
+#if 0 // testing...
+        x = in[i];
+#else
         x = svf.getNextSample(in[i]) + in[i]*svfDryLevel;
+#endif
         sch.setRate(rateRamp.update());
         sch.setPre(preRamp.update());
         sch.setRec(recRamp.update());

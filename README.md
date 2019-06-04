@@ -1,15 +1,20 @@
-# softcut-
+softcut-
+========
 
 Max/MSP port of "softcut" audio processor (from monome:norns project)
 
-# building
+building
+========
 
-- 1. download Max SDK from cycling '74: [https://cycling74.com/downloads/sdk]. this project was buit using the 8.0.3 version of the SDK.
+-   download Max SDK from cycling '74: [https://cycling74.com/downloads/sdk].
+    this project was buit using the 8.0.3 version of the SDK.
 
-- 2. clone this repo to `max-sdk-8.0.3/source/audio/softcut~`
+-   clone this repo to `max-sdk-8.0.3/source/audio/softcut~`
 
-- 3. build the xcode project
+-   build the xcode project.
 
-- 4. put the .mxo somewhere your Max install can find it
+-   this should create `max-sdk-8.0.3/externals/softcut~.mxo`; copy this somewhere your Max install can find it
 
-- 5. run the test patch
+-   run the test patch at `max-sdk-8.0.3/source/audio/softcut~/test.maxpat`
+
+ 

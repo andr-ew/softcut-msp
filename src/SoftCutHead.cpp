@@ -36,7 +36,7 @@ void SoftCutHead::processSample(sample_t in, sample_t *out) {
     int numFades = (head[0].state_ == FadeIn || head[0].state_ == FadeOut)
             + (head[1].state_ == FadeIn || head[1].state_ == FadeOut);
 
-    BOOST_ASSERT_MSG(!(head[0].state_ == Active && head[1].state_ == Active), "multiple active heads");
+    // BOOST_ASSERT_MSG(!(head[0].state_ == Active && head[1].state_ == Active), "multiple active heads");
 
     head[0].poke(in, pre, rec, numFades);
     head[1].poke(in, pre, rec, numFades);
@@ -55,7 +55,7 @@ void SoftCutHead::processSampleNoRead(sample_t in, sample_t *out) {
     int numFades = (head[0].state_ == FadeIn || head[0].state_ == FadeOut)
                    + (head[1].state_ == FadeIn || head[1].state_ == FadeOut);
 
-    BOOST_ASSERT_MSG(!(head[0].state_ == Active && head[1].state_ == Active), "multiple active heads");
+    // BOOST_ASSERT_MSG(!(head[0].state_ == Active && head[1].state_ == Active), "multiple active heads");
 
     head[0].poke(in, pre, rec, numFades);
     head[1].poke(in, pre, rec, numFades);
@@ -72,7 +72,7 @@ void SoftCutHead::processSampleNoWrite(sample_t in, sample_t *out) {
     (void)in;
     *out = mixFade(head[0].peek(), head[1].peek(), head[0].fade(), head[1].fade());
 
-    BOOST_ASSERT_MSG(!(head[0].state_ == Active && head[1].state_ == Active), "multiple active heads");
+    // BOOST_ASSERT_MSG(!(head[0].state_ == Active && head[1].state_ == Active), "multiple active heads");
 
     takeAction(head[0].updatePhase(start, end, loopFlag));
     takeAction(head[1].updatePhase(start, end, loopFlag));

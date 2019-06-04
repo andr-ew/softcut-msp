@@ -5,7 +5,6 @@
 #include <math.h>
 #include <algorithm>
 #include <iostream>
-#include <boost/assert.hpp>
 #include <cstring>
 
 #include "Interpolate.h"
@@ -72,7 +71,7 @@ void FadeCurves::calcRecFade() {
         }
         buf[n] = 1.f;
     } else {
-        BOOST_ASSERT_MSG(false, "undefined fade shape");
+        // BOOST_ASSERT_MSG(false, "undefined fade shape");
     }
     memcpy(recFadeBuf, buf, fadeBufSize*sizeof(float));
 }
@@ -99,14 +98,14 @@ void FadeCurves::calcPreFade() {
             x += phi;
         }
     } else if (recShape == Raised) {
-        BOOST_ASSERT(preShape == Raised);
+        // BOOST_ASSERT(preShape == Raised);
         const float phi = fpi / (nwp*2);
         while (i < nwp) {
             buf[i++] = cosf(x);
             x += phi;
         }
     } else {
-        BOOST_ASSERT_MSG(false, "undefined fade shape");
+        // BOOST_ASSERT_MSG(false, "undefined fade shape");
     }
     while(i<fadeBufSize) { buf[i++] = 0.f; }
     memcpy(preFadeBuf, buf, fadeBufSize*sizeof(float));
@@ -136,7 +135,6 @@ void FadeCurves::setMinPreWindowFrames(unsigned int x) {
 float FadeCurves::getRecFadeValue(float x) {
     return Interpolate::tabLinear<float, fadeBufSize>(recFadeBuf, x);
 }
-
 
 float FadeCurves::getPreFadeValue(float x) {
     return Interpolate::tabLinear<float, fadeBufSize>(preFadeBuf, x);

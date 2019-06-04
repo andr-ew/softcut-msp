@@ -10,7 +10,7 @@
 
 #include "SoftCutHead.h"
 #include "Svf.h"
-#include "../Utilities.h"
+#include "Utilities.h"
 
 namespace softcut {
     class SoftCutVoice {

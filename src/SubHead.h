@@ -9,8 +9,6 @@
 #ifndef SOFTCUTHEAD_SUBHEAD_H
 #define SOFTCUTHEAD_SUBHEAD_H
 
-#include <boost/math/special_functions/sign.hpp>
-
 #include "Resampler.h"
 #include "LowpassBrickwall.h"
 #include "SoftClip.h"

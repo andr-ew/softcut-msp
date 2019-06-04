@@ -142,6 +142,9 @@ void ext_main(void *r)
     class_addmethod(c, (method)softcut_rec_offset, "rec_offset", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_level_slew_time, "level_slew_time", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_rate_slew_time, "rate_slew_time", A_FLOAT, 0);
+    
+    class_register(CLASS_BOX, c);
+    softcut_class = c;
 }
 
 void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam)

@@ -1,7 +1,7 @@
 softcut-msp
 ========
 
-Max/MSP port of "softcut" audio processor (from monome:norns project)
+Max/MSP port of "softcut" audio processor (from monome's ['norns' project](https://github.com/monome/norns/))
 
 building
 ========

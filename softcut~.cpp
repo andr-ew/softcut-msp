@@ -14,6 +14,9 @@
 
 // softcut includes
 #include "src/SoftCutVoice.h"
+#include "src/FadeCurves.h"
+
+using softcut::FadeCurves;
 
 #define SOFTCUT_IO_BUF_FRAMES 8192
 
@@ -132,6 +135,17 @@ static t_class *softcut_class;
 
 void ext_main(void *r)
 {
+    /// FIXME: the fade curve data is static, shared among all instances
+    // this is fine in the context of norns,
+    /// but here each instance should probably own a copy
+    FadeCurves::setPreShape(FadeCurves::Shape::Linear);
+    FadeCurves::setRecShape(FadeCurves::Shape::Raised);
+    FadeCurves::setMinPreWindowFrames(0);
+    FadeCurves::setMinRecDelayFrames(0);
+    FadeCurves::setPreWindowRatio(1.f/8);
+    FadeCurves::setRecDelayRatio(1.f/(8*16));
+    ///
+    
     // declare class: single string argument (buffer reference)
     t_class *c = class_new("softcut~", (method)softcut_new, (method)softcut_free, sizeof(t_softcut), 0L, A_SYM, 0);
     

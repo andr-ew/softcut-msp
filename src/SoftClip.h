@@ -41,7 +41,7 @@ namespace softcut {
 
         float processSample(float x) {
             float ax = fabs(x);
-            const float sx = x > 0.f ? 1.f : -1.f;
+            const float sx = (x > 0.f) ? 1.f : -1.f;
             if (ax > 1.f) {
                 ax = 1.f;
             }

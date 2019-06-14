@@ -20,6 +20,9 @@ using softcut::FadeCurves;
 
 #define SOFTCUT_IO_BUF_FRAMES 1024
 
+/// test... 21 second buffer @48k sr
+#define SOFTCUT_INTERNAL_BUF_SIZE 1048576
+
 typedef struct _softcut {
     t_pxobject l_obj;
     t_buffer_ref *l_buffer_reference;
@@ -30,6 +33,11 @@ typedef struct _softcut {
     // instead of changing it we'll just maintain internal I/O buffers and convert :/
     float inBuf[SOFTCUT_IO_BUF_FRAMES];
     float outBuf[SOFTCUT_IO_BUF_FRAMES];
+    
+    
+    // test
+    float testBuf[SOFTCUT_INTERNAL_BUF_SIZE];
+    
 } t_softcut;
 
 ///////////
@@ -189,19 +197,14 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
     }
 
     // FIXME? assuming buffer is mono.
+    // test: don't
+#if 0
     x->scv.setBuffer(tab, buffer_getframecount(buffer));
+#endif
 
-//#if 1
     for (int i=0; i<n; ++i) { x->inBuf[i] = (float)(*in++); }
     x->scv.processBlockMono(x->inBuf, x->outBuf, n);
     for (int i=0; i<n; ++i) { *out++ = (double)(x->outBuf[i]); }
-//#else
-//    /// testing... ok, skip the conversion?
-//    // in that case we probably want to zero the output first
-//    for (int i=0; i<n; ++i) { out[i] = 0.0; }
-//    x->scv.processBlockMono(src, dst, n);
-//#endif
-    
     buffer_unlocksamples(buffer);
     
     return;
@@ -256,8 +259,8 @@ void *softcut_new(t_symbol *s, long chan)
     
     /// FIXME: the fade curve data is static, shared among all instances
     // this is fine in the context of norns,
-    /// but here each instance should probably own a copy
-    /// in any case, this is the wrong place to set these magic numbers!
+    // but here each instance should probably own a copy
+    // in any case, this is the wrong place to set these magic numbers!
     FadeCurves::setPreShape(FadeCurves::Shape::Linear);
     FadeCurves::setRecShape(FadeCurves::Shape::Raised);
     FadeCurves::setMinPreWindowFrames(0);
@@ -268,6 +271,11 @@ void *softcut_new(t_symbol *s, long chan)
     // there should be a small negative offset, putting rec head behind play head
     // shouldbe just big enough to keep resampling windows apart
     x->scv.setRecOffset(-0.0004);
+    
+    
+#if 1 // test
+    x->scv.setBuffer(x->testBuf, SOFTCUT_INTERNAL_BUF_SIZE);
+#endif
     
     return (x);
 }

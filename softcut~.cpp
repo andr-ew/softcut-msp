@@ -19,7 +19,7 @@
 using softcut::FadeCurves;
 
 #define SOFTCUT_IO_BUF_FRAMES 1024
-#define SOFTCUT_INTERNAL_BUF_SIZE 1048576
+#define SOFTCUT_BUF_FRAMES 8388608 //2^23 samples ~= 174.762667 seconds @48khz SR. set max buffer to 174763ms & SR = 48k
 
 typedef struct _softcut {
     t_pxobject l_obj;
@@ -180,7 +180,7 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
     t_double	*in = ins[0];
     t_double	*out = outs[0];
     
-    int nf, nc;
+    int nf;
     int			n = sampleframes;
     float		*tab;
     t_buffer_obj *buffer = buffer_ref_getobject(x->l_buffer_reference);
@@ -190,7 +190,7 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
         goto zero;
     }
     
-    nf = SOFTCUT_INTERNAL_BUF_SIZE;
+    nf = SOFTCUT_BUF_FRAMES;
 
     // FIXME? assuming buffer is mono.
     x->scv.setBuffer(tab, nf);

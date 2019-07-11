@@ -19,6 +19,7 @@
 using softcut::FadeCurves;
 
 #define SOFTCUT_IO_BUF_FRAMES 1024
+#define SOFTCUT_INTERNAL_BUF_SIZE 1048576
 
 typedef struct _softcut {
     t_pxobject l_obj;
@@ -189,8 +190,7 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
         goto zero;
     }
     
-    nf = buffer_getframecount(buffer);
-    nc = buffer_getchannelcount(buffer);
+    nf = SOFTCUT_INTERNAL_BUF_SIZE;
 
     // FIXME? assuming buffer is mono.
     x->scv.setBuffer(tab, nf);

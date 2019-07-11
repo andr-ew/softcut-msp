@@ -1,7 +1,11 @@
 softcut-msp
 ========
 
-Max/MSP port of "softcut" audio processor (from monome's ['norns' project](https://github.com/monome/norns/))
+Max/MSP port of "softcut" audio processor (from monome's ['norns' project](https://github.com/monome/norns/)) originally written by [ezra buchla](https://github.com/catfact)
+
+installing
+========
+head over to the [releases](https://github.com/AndrewShike/softcut-msp/releases) tab & download the latest thing, then drop softcut~.mxo from the .zip into your project folder, or add it to your [search path](https://docs.cycling74.com/max5/vignettes/core/search_path.html). now softcut~ will be an available object !!
 
 building
 ========

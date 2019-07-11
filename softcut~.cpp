@@ -179,22 +179,26 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
     t_double	*in = ins[0];
     t_double	*out = outs[0];
     
+    int nf, nc;
     int			n = sampleframes;
-    t_float		*tab;
+    float		*tab;
     t_buffer_obj *buffer = buffer_ref_getobject(x->l_buffer_reference);
     
     tab = buffer_locksamples(buffer);
     if (!tab) {
         goto zero;
     }
+    
+    nf = buffer_getframecount(buffer);
+    nc = buffer_getchannelcount(buffer);
 
     // FIXME? assuming buffer is mono.
-    x->scv.setBuffer(tab, buffer_getframecount(buffer));
+    x->scv.setBuffer(tab, nf);
 
 //#if 1
     for (int i=0; i<n; ++i) { x->inBuf[i] = (float)(*in++); }
     x->scv.processBlockMono(x->inBuf, x->outBuf, n);
-    for (int i=0; i<n; ++i) { *out++ = (double)(x->outBuf[i]); }
+    for (int i=0; i<n; ++i) { *out++ = (x->outBuf[i]); }
 //#else
 //    /// testing... ok, skip the conversion?
 //    // in that case we probably want to zero the output first
@@ -202,6 +206,7 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
 //    x->scv.processBlockMono(src, dst, n);
 //#endif
     
+    buffer_setdirty(buffer);
     buffer_unlocksamples(buffer);
     
     return;

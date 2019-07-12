@@ -32,7 +32,7 @@ namespace crone {
 // define this here for a consistent interpretation of pole coefficient
 // we use faust's definition where b=0 is instant, b in [0, 1)
     static float smooth1pole(float x, float x0, float b) {
-        // return x * (1.f - b) + b * x0;f
+        // return x * (1.f - b) + b * x0;
         // refactored
         return x + (x0 - x) * b;
     }
@@ -168,7 +168,7 @@ namespace crone {
         void setTarget(float x) {
             x0 = x;
         }
-
+        
         // update output only
         float update() {
             y0 = smooth1pole(x0, y0, b);

@@ -53,12 +53,12 @@ void SoftCutVoice:: processBlockMono(const float *in, float *out, int numFrames)
 
     float x;
     for(int i=0; i<numFrames; ++i) {
-#if 0 // testing...
-        x = in[i];
-#else
         x = svf.getNextSample(in[i]) + in[i]*svfDryLevel;
-#endif
         sch.setRate(rateRamp.update());
+        ////////
+        // FIXME: too heavy?
+        updateFilterFc();
+        //////
         sch.setPre(preRamp.update());
         sch.setRec(recRamp.update());
         sampleFunc(x, &(out[i]));
@@ -76,8 +76,12 @@ void SoftCutVoice::setSampleRate(float hz) {
 }
 
 void SoftCutVoice::setRate(float rate) {
-    rateRamp.setTarget(rate);
-    updateFilterFc();
+    float r = rate;
+    if (r < minRate) { r = minRate; }
+    if (r > maxRate) { r = maxRate; }
+    rateRamp.setTarget(r);
+    // this happens in sample loop anyways
+    // updateFilterFc();
 }
 
 void SoftCutVoice::setLoopStart(float sec) {
@@ -152,7 +156,7 @@ void SoftCutVoice::setFilterFcMod(float x) {
 void SoftCutVoice::updateFilterFc() {
     float modVal = std::min(fcBase, fcBase * std::fabs(static_cast<float>(sch.getRate())));
     modVal = fcBase + fcMod * (modVal - fcBase);
-    svf.setFc(fcMod);
+    svf.setFc(modVal);
 }
 
 void SoftCutVoice::setBuffer(float *b, unsigned int nf) {

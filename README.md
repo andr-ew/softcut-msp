@@ -16,9 +16,9 @@ reference the softcut [luadocs](https://monome.github.io/norns/doc/modules/softc
 TODO
 ========
 
-- phase output. dunno if this should be a second audio signal (unquantized, like `groove~` sync), or a message outlet that bangs when quantized phase updates (like norns poll)
-- filter modulation helps with aliasing, but sweeping through zero rate (while writing) still causes rate spike that feels like a mistake (when playing back.) fix this with write-amplitude dead zone around rate==0.
-- soft clipper function returns `-0` always. no idea why (it works on the norns and the math looks fine.) disabled for now.
+- phase output.
+- write-amplitude dead zone around rate==0.
+- soft clipper fixes (disabled in this version)
 
 building
 ========

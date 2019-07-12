@@ -106,10 +106,7 @@ void SubHead::poke(float in, float pre, float rec, int numFades) {
     if(state_ == Inactive) {
         return;
     }
-
-    // BOOST_ASSERT_MSG(fade_ >= 0.f && fade_ <= 1.f, "bad fade coefficient in poke()");
-
-
+    
     preFade_ = pre + (1.f-pre) * FadeCurves::getPreFadeValue(fade_);
     recFade_ = rec * FadeCurves::getRecFadeValue(fade_);
     sample_t y; // write value
@@ -118,7 +115,7 @@ void SubHead::poke(float in, float pre, float rec, int numFades) {
     for(int i=0; i<nframes; ++i) {
         y = src[i];
 
-#if 0 // soft clipper
+#if 1 // soft clipper
         y = clip_.processSample(y);
 #endif
 #if 0 // lowpass filter
@@ -165,7 +162,6 @@ void SubHead::setSampleRate(float sr) {
 void SubHead::setPhase(phase_t phase) {
     phase_ = phase;
     wrIdx_ = wrapBufIndex(static_cast<int>(phase_) + (inc_dir_ * recOffset_));
-
     // NB: not resetting the resampler here:
     // - it's ok to keep history of input when changing positions.
     // - resamp output doesn't need clearing b/c we write/read from beginning on each sample anyway
@@ -183,7 +179,6 @@ void SubHead::setRate(rate_t rate) {
     // instead we copy the resampler output backwards into the buffer when rate < 0.
     resamp_.setRate(std::fabs(rate));
 }
-
 
 void SubHead::setState(State state) { state_ = state; }
 

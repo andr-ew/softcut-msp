@@ -57,7 +57,7 @@ namespace softcut {
         bool getRecFlag();
 
         float getPos();
-
+        float getSampleRate() { return sampleRate; }
     private:
         void updateFilterFc();
         void updateQuantPhase();

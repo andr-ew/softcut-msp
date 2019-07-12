@@ -35,22 +35,6 @@ typedef struct _softcut {
     int bufFrames;
 } t_softcut;
 
-// used to round buffer length in samples to a power of 2
-int highestPowerof2(int n)
-{
-    int res = 0;
-    for (int i=n; i>=1; i--)
-    {
-        // If i is a power of 2
-        if ((i & (i-1)) == 0)
-        {
-            res = i;
-            break;
-        }
-    }
-    return res;
-}
-
 ///////////
 /// methods copied from SDK example
 void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
@@ -198,7 +182,6 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
     t_double	*in = ins[0];
     t_double	*out = outs[0];
     
-    int nf;
     int			n = sampleframes;
     float		*tab;
     t_buffer_obj *buffer = buffer_ref_getobject(x->l_buffer_reference);
@@ -208,10 +191,8 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
         goto zero;
     }
     
-    nf = highestPowerof2(buffer_getframecount(buffer));
-
     // FIXME? assuming buffer is mono.
-    x->scv.setBuffer(tab, nf);
+    x->scv.setBuffer(tab, buffer_getframecount(buffer));
 
 //#if 1
     for (int i=0; i<n; ++i) { x->inBuf[i] = (float)(*in++); }

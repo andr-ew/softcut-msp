@@ -115,7 +115,7 @@ void SubHead::poke(float in, float pre, float rec, int numFades) {
     for(int i=0; i<nframes; ++i) {
         y = src[i];
 
-#if 1 // soft clipper
+#if 0 // soft clipper
         y = clip_.processSample(y);
 #endif
 #if 0 // lowpass filter

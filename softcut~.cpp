@@ -195,7 +195,10 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
         for (int i=0; i<n; ++i) { *out++ = 0.f; }
     }
     
-    buffer_setdirty(buffer);
+    if (x->scv.getRecFlag()) {
+        buffer_setdirty(buffer);
+    }
+    
     buffer_unlocksamples(buffer);
     
     return;
@@ -217,6 +220,21 @@ void softcut_dsp64(t_softcut *x, t_object *dsp64, short *count, double samplerat
 {
     dsp_add64(dsp64, (t_object *)x, (t_perfroutine64)softcut_perform64, 0, NULL);
     x->scv.setSampleRate(samplerate);
+    
+    /// FIXME: the fade curve data is static, shared among all instances
+    // this is fine in the context of norns,
+    /// but here each instance should probably own a copy
+    /// in any case, this is the wrong place to set these magic numbers!
+    FadeCurves::setPreShape(FadeCurves::Shape::Linear);
+    FadeCurves::setRecShape(FadeCurves::Shape::Raised);
+    FadeCurves::setMinPreWindowFrames(0);
+    FadeCurves::setMinRecDelayFrames(0);
+    FadeCurves::setPreWindowRatio(1.f/8);
+    FadeCurves::setRecDelayRatio(1.f/(8*16));
+    
+    // there should be a small negative offset, putting rec head behind play head
+    // should be just big enough to keep resampling windows apart
+    x->scv.setRecOffset(-32.0 / samplerate);
 }
 
 // this lets us double-click on softcut~ to open up the buffer~ it references
@@ -248,31 +266,17 @@ void *softcut_new(t_symbol *s, long chan)
     // set buffer reference using argument
     softcut_set(x, s);
     
-    /// FIXME: the fade curve data is static, shared among all instances
-    // this is fine in the context of norns,
-    /// but here each instance should probably own a copy
-    /// in any case, this is the wrong place to set these magic numbers!
-    FadeCurves::setPreShape(FadeCurves::Shape::Linear);
-    FadeCurves::setRecShape(FadeCurves::Shape::Raised);
-    FadeCurves::setMinPreWindowFrames(0);
-    FadeCurves::setMinRecDelayFrames(0);
-    FadeCurves::setPreWindowRatio(1.f/8);
-    FadeCurves::setRecDelayRatio(1.f/(8*16));
-    
-    // there should be a small negative offset, putting rec head behind play head
-    // should be just big enough to keep resampling windows apart
-    x->scv.setRecOffset(8.0 / x->scv.getSampleRate());
+    // WTF!
+    x->scv.setRecOffset(-0.001);
     
     return (x);
 }
-
 
 void softcut_free(t_softcut *x)
 {
     dsp_free((t_pxobject *)x);
     object_free(x->l_buffer_reference);
 }
-
 
 t_max_err softcut_notify(t_softcut *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
 {

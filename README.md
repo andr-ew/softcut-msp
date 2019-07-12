@@ -13,7 +13,7 @@ using
 
 for now, `softcut~` only supports mono buffers, and the size of the buffer used by sofcut should be a number like `ceiling((2^n) / sample rate / 1000)`. so, `174763` (`n = 23` & `sample rate = 48k`) yields just short of 3 minutes, and `699051` (`n=25` and `sample rate = 48k`) gives ya a whopping 11.65 minutes. 
 
-reference the softcut [luadocs](https://monome.github.io/norns/doc/modules/softcut.html) for the list of softcut commands. here they take the form of a message contaning: `command value`.
+reference the softcut [luadocs](https://monome.github.io/norns/doc/modules/softcut.html) for the list of softcut commands. here they take the form of a message contaning: "`command value`".
 
 building
 ========

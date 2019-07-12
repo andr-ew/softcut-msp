@@ -15,6 +15,10 @@
 namespace softcut {
     class SoftCutVoice {
     public:
+        static constexpr float maxRate = 32.f;
+        static constexpr float minRate = -32.f;
+        
+    public:
         SoftCutVoice();
         void setBuffer(float* buf, unsigned int numFrames);
 
@@ -57,7 +61,7 @@ namespace softcut {
         bool getRecFlag();
 
         float getPos();
-
+        float getSampleRate() { return sampleRate; }
     private:
         void updateFilterFc();
         void updateQuantPhase();

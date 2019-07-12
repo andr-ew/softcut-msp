@@ -19,7 +19,6 @@
 using softcut::FadeCurves;
 
 #define SOFTCUT_IO_BUF_FRAMES 1024
-//#define SOFTCUT_BUF_FRAMES 8388608 //2^23 samples ~= 174.762667 seconds @48khz SR. set max buffer to 174763ms & SR = 48k
 
 typedef struct _softcut {
     t_pxobject l_obj;
@@ -34,22 +33,6 @@ typedef struct _softcut {
     
     int bufFrames;
 } t_softcut;
-
-// used to round buffer length in samples to a power of 2
-int highestPowerof2(int n)
-{
-    int res = 0;
-    for (int i=n; i>=1; i--)
-    {
-        // If i is a power of 2
-        if ((i & (i-1)) == 0)
-        {
-            res = i;
-            break;
-        }
-    }
-    return res;
-}
 
 ///////////
 /// methods copied from SDK example
@@ -137,10 +120,6 @@ void softcut_pre_level(t_softcut *sc, double val) {
     post("softcut_pre_level( %f )", val);
     sc->scv.setPreLevel(val);
 }
-void softcut_rec_offset(t_softcut *sc, double val) {
-    post("softcut_rec_offset( %f )", val);
-    sc->scv.setRecOffset(val);
-}
 void softcut_level_slew_time(t_softcut *sc, double val) {
     post("softcut_level_slew_time( %f )", val);
     sc->scv.setLevelSlewTime(val);
@@ -165,7 +144,6 @@ void ext_main(void *r)
     // set buffer
     class_addmethod(c, (method)softcut_set, "set", A_SYM, 0);
     
-    
     //--- softcut methods
     class_addmethod(c, (method)softcut_filter_fc, "filter_fc", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_filter_fc_mod, "filter_fc_mod", A_FLOAT, 0);
@@ -185,7 +163,6 @@ void ext_main(void *r)
     class_addmethod(c, (method)softcut_rec, "rec", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_rec_level, "rec_level", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_pre_level, "pre_level", A_FLOAT, 0);
-    class_addmethod(c, (method)softcut_rec_offset, "rec_offset", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_level_slew_time, "level_slew_time", A_FLOAT, 0);
     class_addmethod(c, (method)softcut_rate_slew_time, "rate_slew_time", A_FLOAT, 0);
     class_dspinit(c);
@@ -198,7 +175,6 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
     t_double	*in = ins[0];
     t_double	*out = outs[0];
     
-    int nf;
     int			n = sampleframes;
     float		*tab;
     t_buffer_obj *buffer = buffer_ref_getobject(x->l_buffer_reference);
@@ -208,23 +184,21 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
         goto zero;
     }
     
-    nf = highestPowerof2(buffer_getframecount(buffer));
-
     // FIXME? assuming buffer is mono.
-    x->scv.setBuffer(tab, nf);
+    x->scv.setBuffer(tab, buffer_getframecount(buffer));
 
-//#if 1
     for (int i=0; i<n; ++i) { x->inBuf[i] = (float)(*in++); }
     x->scv.processBlockMono(x->inBuf, x->outBuf, n);
-    for (int i=0; i<n; ++i) { *out++ = (x->outBuf[i]); }
-//#else
-//    /// testing... ok, skip the conversion?
-//    // in that case we probably want to zero the output first
-//    for (int i=0; i<n; ++i) { out[i] = 0.0; }
-//    x->scv.processBlockMono(src, dst, n);
-//#endif
+    if (x->scv.getPlayFlag()) {
+        for (int i=0; i<n; ++i) { *out++ = (x->outBuf[i]); }
+    } else {
+        for (int i=0; i<n; ++i) { *out++ = 0.f; }
+    }
     
-    buffer_setdirty(buffer);
+    if (x->scv.getRecFlag()) {
+        buffer_setdirty(buffer);
+    }
+    
     buffer_unlocksamples(buffer);
     
     return;
@@ -246,6 +220,21 @@ void softcut_dsp64(t_softcut *x, t_object *dsp64, short *count, double samplerat
 {
     dsp_add64(dsp64, (t_object *)x, (t_perfroutine64)softcut_perform64, 0, NULL);
     x->scv.setSampleRate(samplerate);
+    
+    /// FIXME: the fade curve data is static, shared among all instances
+    // this is fine in the context of norns,
+    /// but here each instance should probably own a copy
+    /// in any case, this is the wrong place to set these magic numbers!
+    FadeCurves::setPreShape(FadeCurves::Shape::Linear);
+    FadeCurves::setRecShape(FadeCurves::Shape::Raised);
+    FadeCurves::setMinPreWindowFrames(0);
+    FadeCurves::setMinRecDelayFrames(0);
+    FadeCurves::setPreWindowRatio(1.f/8);
+    FadeCurves::setRecDelayRatio(1.f/(8*16));
+    
+    // there should be a small negative offset, putting rec head behind play head
+    // should be just big enough to keep resampling windows apart
+    x->scv.setRecOffset(-12.0 / samplerate);
 }
 
 // this lets us double-click on softcut~ to open up the buffer~ it references
@@ -277,31 +266,14 @@ void *softcut_new(t_symbol *s, long chan)
     // set buffer reference using argument
     softcut_set(x, s);
     
-    /// FIXME: the fade curve data is static, shared among all instances
-    // this is fine in the context of norns,
-    /// but here each instance should probably own a copy
-    /// in any case, this is the wrong place to set these magic numbers!
-    FadeCurves::setPreShape(FadeCurves::Shape::Linear);
-    FadeCurves::setRecShape(FadeCurves::Shape::Raised);
-    FadeCurves::setMinPreWindowFrames(0);
-    FadeCurves::setMinRecDelayFrames(0);
-    FadeCurves::setPreWindowRatio(1.f/8);
-    FadeCurves::setRecDelayRatio(1.f/(8*16));
-    
-    // there should be a small negative offset, putting rec head behind play head
-    // shouldbe just big enough to keep resampling windows apart
-    x->scv.setRecOffset(-0.0004);
-    
     return (x);
 }
-
 
 void softcut_free(t_softcut *x)
 {
     dsp_free((t_pxobject *)x);
     object_free(x->l_buffer_reference);
 }
-
 
 t_max_err softcut_notify(t_softcut *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
 {

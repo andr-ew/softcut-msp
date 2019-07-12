@@ -97,23 +97,23 @@
 		81BB914122A612C700718B52 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				81BB914222A612C700718B52 /* TestBuffers.h */,
-				81BB914322A612C700718B52 /* Svf.cpp */,
-				81BB914422A612C700718B52 /* Types.h */,
-				81BB914522A612C700718B52 /* SubHead.h */,
-				81BB914622A612C700718B52 /* SoftCutVoice.cpp */,
 				81BB914722A612C700718B52 /* FadeCurves.cpp */,
 				81BB914822A612C700718B52 /* FadeCurves.h */,
-				81BB914922A612C700718B52 /* SoftCutHead.cpp */,
-				81BB914A22A612C700718B52 /* SoftClip.h */,
-				81BB914B22A612C700718B52 /* SoftCutHead.h */,
 				81BB914C22A612C700718B52 /* Interpolate.h */,
-				81BB914D22A612C700718B52 /* SoftCutVoice.h */,
-				81BB914E22A612C700718B52 /* Svf.h */,
-				81BB914F22A612C700718B52 /* Resampler.h */,
 				81BB915122A612C700718B52 /* LowpassBrickwall.h */,
+				81BB914F22A612C700718B52 /* Resampler.h */,
+				81BB914A22A612C700718B52 /* SoftClip.h */,
 				81BB915222A612C700718B52 /* SoftCut.h */,
+				81BB914B22A612C700718B52 /* SoftCutHead.h */,
+				81BB914922A612C700718B52 /* SoftCutHead.cpp */,
+				81BB914D22A612C700718B52 /* SoftCutVoice.h */,
+				81BB914622A612C700718B52 /* SoftCutVoice.cpp */,
+				81BB914522A612C700718B52 /* SubHead.h */,
 				81BB915322A612C700718B52 /* SubHead.cpp */,
+				81BB914E22A612C700718B52 /* Svf.h */,
+				81BB914322A612C700718B52 /* Svf.cpp */,
+				81BB914222A612C700718B52 /* TestBuffers.h */,
+				81BB914422A612C700718B52 /* Types.h */,
 			);
 			path = src;
 			sourceTree = "<group>";

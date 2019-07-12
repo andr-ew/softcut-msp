@@ -106,10 +106,7 @@ void SubHead::poke(float in, float pre, float rec, int numFades) {
     if(state_ == Inactive) {
         return;
     }
-
-    // BOOST_ASSERT_MSG(fade_ >= 0.f && fade_ <= 1.f, "bad fade coefficient in poke()");
-
-
+    
     preFade_ = pre + (1.f-pre) * FadeCurves::getPreFadeValue(fade_);
     recFade_ = rec * FadeCurves::getRecFadeValue(fade_);
     sample_t y; // write value
@@ -152,9 +149,10 @@ float SubHead::peek4() {
 }
 
 unsigned int SubHead::wrapBufIndex(int x) {
-    x += bufFrames_;
-    // BOOST_ASSERT_MSG(x >= 0, "buffer index before masking is non-negative");
-    return x & bufMask_;
+    int y = x;
+    while (y < 0) { y += bufFrames_; }
+    while (y >= bufFrames_ ) { y -= bufFrames_; }
+    return y;
 }
 
 void SubHead::setSampleRate(float sr) {
@@ -164,19 +162,14 @@ void SubHead::setSampleRate(float sr) {
 void SubHead::setPhase(phase_t phase) {
     phase_ = phase;
     wrIdx_ = wrapBufIndex(static_cast<int>(phase_) + (inc_dir_ * recOffset_));
-
     // NB: not resetting the resampler here:
     // - it's ok to keep history of input when changing positions.
     // - resamp output doesn't need clearing b/c we write/read from beginning on each sample anyway
 }
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// **NB** buffer size must be a power of two!!!!
 void SubHead::setBuffer(float *buf, unsigned int frames) {
     buf_  = buf;
     bufFrames_ = frames;
-    bufMask_ = frames - 1;
-    // BOOST_ASSERT_MSG((bufFrames_ != 0) && !(bufFrames_ & bufMask_), "buffer size is not 2^N");
 }
 
 void SubHead::setRate(rate_t rate) {
@@ -186,7 +179,6 @@ void SubHead::setRate(rate_t rate) {
     // instead we copy the resampler output backwards into the buffer when rate < 0.
     resamp_.setRate(std::fabs(rate));
 }
-
 
 void SubHead::setState(State state) { state_ = state; }
 

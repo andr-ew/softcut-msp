@@ -116,8 +116,6 @@ namespace softcut {
                                                                        inBuf_[i3]));
 #endif
         }
-
-
         // write, upsampling
         // return frames written (>= 1)
         // assumptions: input has been pushed. rate_ > 1.0

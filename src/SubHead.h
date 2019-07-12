@@ -65,7 +65,6 @@ namespace softcut {
         sample_t* buf_; // output buffer
         unsigned int wrIdx_; // write index
         unsigned int bufFrames_;
-        unsigned int bufMask_;
 
         State state_;
         rate_t rate_;

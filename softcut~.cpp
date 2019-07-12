@@ -234,7 +234,7 @@ void softcut_dsp64(t_softcut *x, t_object *dsp64, short *count, double samplerat
     
     // there should be a small negative offset, putting rec head behind play head
     // should be just big enough to keep resampling windows apart
-    x->scv.setRecOffset(-32.0 / samplerate);
+    x->scv.setRecOffset(-12.0 / samplerate);
 }
 
 // this lets us double-click on softcut~ to open up the buffer~ it references
@@ -265,9 +265,6 @@ void *softcut_new(t_symbol *s, long chan)
     outlet_new((t_object *)x, "signal");
     // set buffer reference using argument
     softcut_set(x, s);
-    
-    // WTF!
-    x->scv.setRecOffset(-0.001);
     
     return (x);
 }

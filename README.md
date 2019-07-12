@@ -16,7 +16,7 @@ reference the softcut [luadocs](https://monome.github.io/norns/doc/modules/softc
 TODO
 ========
 
-- phase output.
+- phase output
 - write-amplitude dead zone around rate==0.
 - soft clipper fixes (disabled in this version)
 

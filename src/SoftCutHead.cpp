@@ -1,6 +1,8 @@
 //
 // Created by ezra on 12/6/17.
 //
+
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <limits>
 

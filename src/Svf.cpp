@@ -2,7 +2,10 @@
 // Created by ezra on 11/8/18.
 //
 
+#define _USE_MATH_DEFINES
 #include <math.h>
+#include <cmath>
+
 #include "Svf.h"
 
 Svf::Svf() = default;

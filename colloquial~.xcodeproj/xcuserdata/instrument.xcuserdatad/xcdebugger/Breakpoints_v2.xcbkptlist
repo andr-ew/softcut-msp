@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "214"
             endingLineNumber = "214"
-            landmarkName = "softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam)"
+            landmarkName = "softcut_set(t_softcut *x, t_symbol *s)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

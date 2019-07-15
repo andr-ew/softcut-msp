@@ -44,6 +44,7 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
+         BundleIdentifier = "com.cycling74.Max"
          FilePath = "/Applications/Max.app">
       </PathRunnable>
       <MacroExpansion>
@@ -57,7 +58,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/instrument/Documents/Max\ 8/Packages/max-sdk-8.0.3/source/audio/softcut\~/softcut-test.maxpat "
+            argument = "/Users/instrument/Documents/Max\ 8/Packages/max-sdk-8.0.3/source/audio/colloquial\~/colloquial-test.maxpat "
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

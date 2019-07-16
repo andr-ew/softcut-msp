@@ -46,7 +46,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 369.0, 167.0, 50.0, 22.0 ]
+					"patching_rect" : [ 84.0, 243.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -57,7 +57,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 307.0, 286.0, 43.0, 22.0 ],
+					"patching_rect" : [ 294.0, 321.0, 43.0, 22.0 ],
 					"text" : "cycle~"
 				}
 
@@ -68,7 +68,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 150.0, 390.0, 35.0, 22.0 ],
+					"patching_rect" : [ 153.0, 402.0, 35.0, 22.0 ],
 					"text" : "dac~"
 				}
 
@@ -79,24 +79,24 @@
 						"clips" : [ 							{
 								"filename" : "Macintosh HD:/Users/instrument/Desktop/180308-000.wav",
 								"filekind" : "audiofile",
-								"selection" : [ 0.153846153846154, 0.653846153846154 ],
-								"loop" : 0,
+								"selection" : [ 0.163461538461538, 0.653846153846154 ],
+								"loop" : 1,
 								"content_state" : 								{
-									"pitchshift" : [ 1.0 ],
-									"pitchcorrection" : [ 0 ],
-									"originallengthms" : [ 0.0 ],
-									"timestretch" : [ 0 ],
-									"quality" : [ "basic" ],
 									"formant" : [ 1.0 ],
-									"followglobaltempo" : [ 0 ],
-									"slurtime" : [ 0.0 ],
+									"pitchshift" : [ 1.0 ],
 									"mode" : [ "basic" ],
-									"basictuning" : [ 440 ],
-									"speed" : [ 1.0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"play" : [ 0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ]
+									"followglobaltempo" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originaltempo" : [ 120.0 ],
+									"slurtime" : [ 0.0 ],
+									"originallengthms" : [ 0.0 ],
+									"quality" : [ "basic" ],
+									"basictuning" : [ 440 ],
+									"timestretch" : [ 0 ],
+									"play" : [ 0 ],
+									"speed" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ]
 								}
 
 							}
@@ -119,7 +119,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 143.0, 272.0, 66.0, 22.0 ],
+					"patching_rect" : [ 153.0, 316.0, 66.0, 22.0 ],
 					"text" : "colloquial~"
 				}
 

@@ -16,7 +16,8 @@
 #include "Resampler.h"
 #include "Interpolate.h"
 
-#define BASE_BUF_SIZE 4
+#define BUFSIZE 4
+#define BUFMASK 3
 
 typedef struct _colloquial {
     t_pxobject l_obj;
@@ -31,7 +32,7 @@ typedef struct _colloquial {
     // this only needs to be big enough for our interpolation window.
     // (if we allowed upsampling things would get more complicated, but why bother?)
     
-    double buf[BASE_BUF_SIZE * 256];
+    double buf[BUFSIZE];
     unsigned int idx = 0;
     double rate;
     int window;
@@ -43,9 +44,7 @@ typedef struct _colloquial {
 
 unsigned int wrapBufIndex(t_colloquial *x, int val) {
     int y = val;
-    while (y < 0) { y += x->window; }
-    while (y >= x->window ) { y -= x->window; }
-    return y;
+    return y & BUFMASK;
 }
 
 // write a new value to the buffer, update the index
@@ -59,9 +58,9 @@ double readFromBuf(t_colloquial *x) {
     // assumptions:
     // - we always read after write, so `idx` will be the _oldest_ location
     // - idx is already wrapped
-    double y0 = x->buf[wrapBufIndex(x, x->idx + (3 * x->window))];
-    double y_1 = x->buf[wrapBufIndex(x, x->idx + (2 * x->window))];
-    double y_2 = x->buf[wrapBufIndex(x, x->idx + (1 * x->window))];
+    double y0 = x->buf[wrapBufIndex(x, x->idx + 3)];
+    double y_1 = x->buf[wrapBufIndex(x, x->idx + 2)];
+    double y_2 = x->buf[wrapBufIndex(x, x->idx + 1)];
     double y_3 = x->buf[x->idx];
     double y = softcut::Interpolate::hermite<double>(x->phase, y_3, y_2, y_1, y0);
     x->phase += x->inc;
@@ -86,11 +85,11 @@ void setRate(t_colloquial *x, double val) {
 
 void setWindow(t_colloquial *x, double val) {
     if (val > 256.f) {
-        x->window = 256 * BASE_BUF_SIZE;
-    } else if (val < 1.f) {
-        x->window = BASE_BUF_SIZE;
+        x->window = 256;
+    } else if (val < 0.f) {
+        x->window = 1;
     } else {
-        x->window = (int)val * BASE_BUF_SIZE;
+        x->window = (int)val;
     }
 }
 

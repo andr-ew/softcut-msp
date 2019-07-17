@@ -120,21 +120,21 @@
 								"selection" : [ 0.163461538461538, 0.653846153846154 ],
 								"loop" : 1,
 								"content_state" : 								{
-									"formantcorrection" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"formant" : [ 1.0 ],
-									"originaltempo" : [ 120.0 ],
-									"followglobaltempo" : [ 0 ],
-									"timestretch" : [ 0 ],
-									"pitchcorrection" : [ 0 ],
-									"pitchshift" : [ 1.0 ],
-									"slurtime" : [ 0.0 ],
-									"mode" : [ "basic" ],
 									"originallengthms" : [ 0.0 ],
+									"formant" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"originallength" : [ 0.0, "ticks" ],
+									"pitchcorrection" : [ 0 ],
+									"play" : [ 0 ],
 									"basictuning" : [ 440 ],
+									"mode" : [ "basic" ],
+									"pitchshift" : [ 1.0 ],
+									"originaltempo" : [ 120.0 ],
 									"quality" : [ "basic" ],
-									"play" : [ 0 ]
+									"speed" : [ 1.0 ],
+									"slurtime" : [ 0.0 ],
+									"formantcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ]
 								}
 
 							}

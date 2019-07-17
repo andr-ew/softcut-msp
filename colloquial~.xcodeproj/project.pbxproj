@@ -7,25 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D8A00A222DD269600986703 /* colloquial~.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D8A00A122DD269600986703 /* colloquial~.c */; };
-		81BB915422A612C700718B52 /* TestBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914222A612C700718B52 /* TestBuffers.h */; };
+		81BB913F22A5D10F00718B52 /* colloquial~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB913E22A5D10F00718B52 /* colloquial~.cpp */; };
 		81BB915522A612C700718B52 /* Svf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB914322A612C700718B52 /* Svf.cpp */; };
 		81BB915622A612C700718B52 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914422A612C700718B52 /* Types.h */; };
-		81BB915722A612C700718B52 /* SubHead.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914522A612C700718B52 /* SubHead.h */; };
-		81BB915822A612C700718B52 /* SoftCutVoice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB914622A612C700718B52 /* SoftCutVoice.cpp */; };
-		81BB915922A612C700718B52 /* FadeCurves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB914722A612C700718B52 /* FadeCurves.cpp */; };
-		81BB915A22A612C700718B52 /* FadeCurves.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914822A612C700718B52 /* FadeCurves.h */; };
-		81BB915B22A612C700718B52 /* SoftCutHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB914922A612C700718B52 /* SoftCutHead.cpp */; };
 		81BB915C22A612C700718B52 /* SoftClip.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914A22A612C700718B52 /* SoftClip.h */; };
-		81BB915D22A612C700718B52 /* SoftCutHead.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914B22A612C700718B52 /* SoftCutHead.h */; };
 		81BB915E22A612C700718B52 /* Interpolate.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914C22A612C700718B52 /* Interpolate.h */; };
-		81BB915F22A612C700718B52 /* SoftCutVoice.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914D22A612C700718B52 /* SoftCutVoice.h */; };
 		81BB916022A612C700718B52 /* Svf.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914E22A612C700718B52 /* Svf.h */; };
 		81BB916122A612C700718B52 /* Resampler.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914F22A612C700718B52 /* Resampler.h */; };
 		81BB916322A612C700718B52 /* LowpassBrickwall.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB915122A612C700718B52 /* LowpassBrickwall.h */; };
-		81BB916422A612C700718B52 /* SoftCut.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB915222A612C700718B52 /* SoftCut.h */; };
-		81BB916522A612C700718B52 /* SubHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB915322A612C700718B52 /* SubHead.cpp */; };
-		81BB916822A6330100718B52 /* colloquial~.temp_caseinsensitive_rename.mxo in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81BB916822A6330100718B52 /* colloquial~.mxo in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2FBBEAE508F335360078DB84 /* colloquial~.mxo */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,33 +25,23 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				81BB916822A6330100718B52 /* colloquial~.temp_caseinsensitive_rename.mxo in CopyFiles */,
+				81BB916822A6330100718B52 /* colloquial~.mxo in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D8A00A122DD269600986703 /* colloquial~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "colloquial~.c"; sourceTree = "<group>"; };
 		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
-		2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "colloquial~.temp_caseinsensitive_rename.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81BB914222A612C700718B52 /* TestBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBuffers.h; sourceTree = "<group>"; };
+		2FBBEAE508F335360078DB84 /* colloquial~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "colloquial~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81BB913E22A5D10F00718B52 /* colloquial~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "colloquial~.cpp"; sourceTree = "<group>"; };
 		81BB914322A612C700718B52 /* Svf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Svf.cpp; sourceTree = "<group>"; };
 		81BB914422A612C700718B52 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
-		81BB914522A612C700718B52 /* SubHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubHead.h; sourceTree = "<group>"; };
-		81BB914622A612C700718B52 /* SoftCutVoice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoftCutVoice.cpp; sourceTree = "<group>"; };
-		81BB914722A612C700718B52 /* FadeCurves.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FadeCurves.cpp; sourceTree = "<group>"; };
-		81BB914822A612C700718B52 /* FadeCurves.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeCurves.h; sourceTree = "<group>"; };
-		81BB914922A612C700718B52 /* SoftCutHead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoftCutHead.cpp; sourceTree = "<group>"; };
 		81BB914A22A612C700718B52 /* SoftClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftClip.h; sourceTree = "<group>"; };
-		81BB914B22A612C700718B52 /* SoftCutHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftCutHead.h; sourceTree = "<group>"; };
 		81BB914C22A612C700718B52 /* Interpolate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interpolate.h; sourceTree = "<group>"; };
-		81BB914D22A612C700718B52 /* SoftCutVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftCutVoice.h; sourceTree = "<group>"; };
 		81BB914E22A612C700718B52 /* Svf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Svf.h; sourceTree = "<group>"; };
 		81BB914F22A612C700718B52 /* Resampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resampler.h; sourceTree = "<group>"; };
 		81BB915122A612C700718B52 /* LowpassBrickwall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LowpassBrickwall.h; sourceTree = "<group>"; };
-		81BB915222A612C700718B52 /* SoftCut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftCut.h; sourceTree = "<group>"; };
-		81BB915322A612C700718B52 /* SubHead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SubHead.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +58,8 @@
 		089C166AFE841209C02AAC07 /* iterator */ = {
 			isa = PBXGroup;
 			children = (
-				1D8A00A122DD269600986703 /* colloquial~.c */,
 				81BB914122A612C700718B52 /* src */,
+				81BB913E22A5D10F00718B52 /* colloquial~.cpp */,
 				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
 			);
@@ -89,7 +69,7 @@
 		19C28FB4FE9D528D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */,
+				2FBBEAE508F335360078DB84 /* colloquial~.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,22 +77,12 @@
 		81BB914122A612C700718B52 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				81BB914722A612C700718B52 /* FadeCurves.cpp */,
-				81BB914822A612C700718B52 /* FadeCurves.h */,
 				81BB914C22A612C700718B52 /* Interpolate.h */,
 				81BB915122A612C700718B52 /* LowpassBrickwall.h */,
 				81BB914F22A612C700718B52 /* Resampler.h */,
 				81BB914A22A612C700718B52 /* SoftClip.h */,
-				81BB915222A612C700718B52 /* SoftCut.h */,
-				81BB914B22A612C700718B52 /* SoftCutHead.h */,
-				81BB914922A612C700718B52 /* SoftCutHead.cpp */,
-				81BB914D22A612C700718B52 /* SoftCutVoice.h */,
-				81BB914622A612C700718B52 /* SoftCutVoice.cpp */,
-				81BB914522A612C700718B52 /* SubHead.h */,
-				81BB915322A612C700718B52 /* SubHead.cpp */,
 				81BB914E22A612C700718B52 /* Svf.h */,
 				81BB914322A612C700718B52 /* Svf.cpp */,
-				81BB914222A612C700718B52 /* TestBuffers.h */,
 				81BB914422A612C700718B52 /* Types.h */,
 			);
 			path = src;
@@ -128,24 +98,18 @@
 				81BB916322A612C700718B52 /* LowpassBrickwall.h in Headers */,
 				81BB916122A612C700718B52 /* Resampler.h in Headers */,
 				81BB915622A612C700718B52 /* Types.h in Headers */,
-				81BB915D22A612C700718B52 /* SoftCutHead.h in Headers */,
-				81BB915F22A612C700718B52 /* SoftCutVoice.h in Headers */,
 				81BB916022A612C700718B52 /* Svf.h in Headers */,
-				81BB915422A612C700718B52 /* TestBuffers.h in Headers */,
-				81BB915A22A612C700718B52 /* FadeCurves.h in Headers */,
-				81BB915722A612C700718B52 /* SubHead.h in Headers */,
 				81BB915E22A612C700718B52 /* Interpolate.h in Headers */,
 				81BB915C22A612C700718B52 /* SoftClip.h in Headers */,
-				81BB916422A612C700718B52 /* SoftCut.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2FBBEAD608F335360078DB84 /* softcut~.mxo */ = {
+		2FBBEAD608F335360078DB84 /* colloquial~.mxo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "softcut~.mxo" */;
+			buildConfigurationList = 2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "colloquial~.mxo" */;
 			buildPhases = (
 				2FBBEAD708F335360078DB84 /* Headers */,
 				2FBBEAD808F335360078DB84 /* Resources */,
@@ -158,9 +122,9 @@
 			);
 			dependencies = (
 			);
-			name = "softcut~.mxo";
+			name = "colloquial~.mxo";
 			productName = iterator;
-			productReference = 2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */;
+			productReference = 2FBBEAE508F335360078DB84 /* colloquial~.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +133,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 1020;
 			};
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "colloquial~" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -183,7 +147,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2FBBEAD608F335360078DB84 /* softcut~.mxo */,
+				2FBBEAD608F335360078DB84 /* colloquial~.mxo */,
 			);
 		};
 /* End PBXProject section */
@@ -213,12 +177,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81BB915822A612C700718B52 /* SoftCutVoice.cpp in Sources */,
-				81BB915B22A612C700718B52 /* SoftCutHead.cpp in Sources */,
+				81BB913F22A5D10F00718B52 /* colloquial~.cpp in Sources */,
 				81BB915522A612C700718B52 /* Svf.cpp in Sources */,
-				81BB916522A612C700718B52 /* SubHead.cpp in Sources */,
-				81BB915922A612C700718B52 /* FadeCurves.cpp in Sources */,
-				1D8A00A222DD269600986703 /* colloquial~.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,16 +188,70 @@
 		2FBBEAD008F335010078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Development;
 		};
 		2FBBEAD108F335010078DB84 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 			};
 			name = Deployment;
 		};
@@ -245,9 +259,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "colloquial~.temp_caseinsensitive_rename";
+				PRODUCT_NAME = "colloquial~";
 			};
 			name = Development;
 		};
@@ -255,8 +270,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COPY_PHASE_STRIP = YES;
-				PRODUCT_NAME = "colloquial~.temp_caseinsensitive_rename";
+				PRODUCT_NAME = "colloquial~";
 			};
 			name = Deployment;
 		};
@@ -272,7 +288,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
 		};
-		2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "softcut~.mxo" */ = {
+		2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "colloquial~.mxo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2FBBEAE108F335360078DB84 /* Development */,

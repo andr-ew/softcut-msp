@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 169.0, 210.0, 745.0, 527.0 ],
+		"rect" : [ 165.0, 196.0, 745.0, 527.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,14 +39,44 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 131.0, 329.0, 86.0, 22.0 ],
+					"text" : "colloquial~ 0.8"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "number~",
+					"mode" : 2,
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "float" ],
+					"patching_rect" : [ 281.0, 417.0, 56.0, 22.0 ],
+					"sig" : 0.0
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"format" : 6,
 					"id" : "obj-9",
 					"maxclass" : "flonum",
+					"maximum" : 1.0,
+					"minimum" : 0.0,
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 84.0, 243.0, 50.0, 22.0 ]
+					"patching_rect" : [ 84.0, 249.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -68,7 +98,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 153.0, 402.0, 35.0, 22.0 ],
+					"patching_rect" : [ 153.0, 437.0, 35.0, 22.0 ],
 					"text" : "dac~"
 				}
 
@@ -82,21 +112,21 @@
 								"selection" : [ 0.163461538461538, 0.653846153846154 ],
 								"loop" : 1,
 								"content_state" : 								{
-									"formant" : [ 1.0 ],
 									"pitchshift" : [ 1.0 ],
-									"mode" : [ "basic" ],
+									"originallength" : [ 0.0, "ticks" ],
 									"formantcorrection" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
 									"followglobaltempo" : [ 0 ],
 									"pitchcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"slurtime" : [ 0.0 ],
-									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"play" : [ 0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"basictuning" : [ 440 ],
-									"timestretch" : [ 0 ],
-									"play" : [ 0 ],
-									"speed" : [ 1.0 ],
-									"originallength" : [ 0.0, "ticks" ]
+									"mode" : [ "basic" ],
+									"originaltempo" : [ 120.0 ],
+									"formant" : [ 1.0 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
@@ -109,18 +139,6 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
 					"patching_rect" : [ 159.0, 159.0, 150.0, 30.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-1",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 153.0, 316.0, 66.0, 22.0 ],
-					"text" : "colloquial~"
 				}
 
 			}
@@ -144,15 +162,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"order" : 1,
-					"source" : [ "obj-3", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"order" : 0,
 					"source" : [ "obj-3", 0 ]
 				}
 

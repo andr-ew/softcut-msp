@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D8A00A222DD269600986703 /* colloquial~.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D8A00A122DD269600986703 /* colloquial~.c */; };
+		81BB913F22A5D10F00718B52 /* softcut~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB913E22A5D10F00718B52 /* softcut~.cpp */; };
 		81BB915422A612C700718B52 /* TestBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914222A612C700718B52 /* TestBuffers.h */; };
 		81BB915522A612C700718B52 /* Svf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB914322A612C700718B52 /* Svf.cpp */; };
 		81BB915622A612C700718B52 /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB914422A612C700718B52 /* Types.h */; };
@@ -25,7 +25,7 @@
 		81BB916322A612C700718B52 /* LowpassBrickwall.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB915122A612C700718B52 /* LowpassBrickwall.h */; };
 		81BB916422A612C700718B52 /* SoftCut.h in Headers */ = {isa = PBXBuildFile; fileRef = 81BB915222A612C700718B52 /* SoftCut.h */; };
 		81BB916522A612C700718B52 /* SubHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BB915322A612C700718B52 /* SubHead.cpp */; };
-		81BB916822A6330100718B52 /* colloquial~.temp_caseinsensitive_rename.mxo in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		81BB916822A6330100718B52 /* softcut~.mxo in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2FBBEAE508F335360078DB84 /* softcut~.mxo */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,16 +35,16 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				81BB916822A6330100718B52 /* colloquial~.temp_caseinsensitive_rename.mxo in CopyFiles */,
+				81BB916822A6330100718B52 /* softcut~.mxo in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D8A00A122DD269600986703 /* colloquial~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "colloquial~.c"; sourceTree = "<group>"; };
 		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
-		2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "colloquial~.temp_caseinsensitive_rename.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FBBEAE508F335360078DB84 /* softcut~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "softcut~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81BB913E22A5D10F00718B52 /* softcut~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "softcut~.cpp"; sourceTree = "<group>"; };
 		81BB914222A612C700718B52 /* TestBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBuffers.h; sourceTree = "<group>"; };
 		81BB914322A612C700718B52 /* Svf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Svf.cpp; sourceTree = "<group>"; };
 		81BB914422A612C700718B52 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 		089C166AFE841209C02AAC07 /* iterator */ = {
 			isa = PBXGroup;
 			children = (
-				1D8A00A122DD269600986703 /* colloquial~.c */,
 				81BB914122A612C700718B52 /* src */,
+				81BB913E22A5D10F00718B52 /* softcut~.cpp */,
 				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
 				19C28FB4FE9D528D11CA2CBB /* Products */,
 			);
@@ -89,7 +89,7 @@
 		19C28FB4FE9D528D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */,
+				2FBBEAE508F335360078DB84 /* softcut~.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 			);
 			name = "softcut~.mxo";
 			productName = iterator;
-			productReference = 2FBBEAE508F335360078DB84 /* colloquial~.temp_caseinsensitive_rename.mxo */;
+			productReference = 2FBBEAE508F335360078DB84 /* softcut~.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -171,12 +171,11 @@
 			attributes = {
 				LastUpgradeCheck = 0610;
 			};
-			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "colloquial~" */;
+			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "softcut~" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* iterator */;
@@ -214,11 +213,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BB915822A612C700718B52 /* SoftCutVoice.cpp in Sources */,
+				81BB913F22A5D10F00718B52 /* softcut~.cpp in Sources */,
 				81BB915B22A612C700718B52 /* SoftCutHead.cpp in Sources */,
 				81BB915522A612C700718B52 /* Svf.cpp in Sources */,
 				81BB916522A612C700718B52 /* SubHead.cpp in Sources */,
 				81BB915922A612C700718B52 /* FadeCurves.cpp in Sources */,
-				1D8A00A222DD269600986703 /* colloquial~.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +246,6 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "colloquial~.temp_caseinsensitive_rename";
 			};
 			name = Development;
 		};
@@ -256,14 +254,13 @@
 			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
-				PRODUCT_NAME = "colloquial~.temp_caseinsensitive_rename";
 			};
 			name = Deployment;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "colloquial~" */ = {
+		2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "softcut~" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2FBBEAD008F335010078DB84 /* Development */,

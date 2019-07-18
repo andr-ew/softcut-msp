@@ -18,105 +18,6 @@
 
 using softcut::FadeCurves;
 
-<<<<<<< HEAD
-typedef struct _colloquial {
-    t_pxobject l_obj;
-    
-    /// Resampler handles interpolated writing.
-    softcut::Resampler resamp;
-    
-    // assumption: Resampler::sample_t == float
-    
-    // we need to do interpolated reads ourselves.
-    // this requires a second buffer.
-    // this only needs to be big enough for our interpolation window.
-    // (if we allowed upsampling things would get more complicated, but why bother?)
-    
-    double buf[BUFSIZE];
-    unsigned int idx = 0;
-    double rate;
-    int window;
-    double sr;
-    double phase = 0.0; // current "playback" phase in [0,1]
-    double inc; // phase increment per sample;
-    
-} t_colloquial;
-
-unsigned int wrapBufIndex(t_colloquial *x, int val) {
-    int y = val;
-    return y & BUFMASK;
-}
-
-// write a new value to the buffer, update the index
-void writeToBuf(t_colloquial *x, const double v) {
-    x->buf[x->idx] = v;
-    x->idx = wrapBufIndex(x, x->idx + 1);
-}
-
-// this could use other interpolation modes if you want more dirt.
-double readFromBuf(t_colloquial *x) {
-    // assumptions:
-    // - we always read after write, so `idx` will be the _oldest_ location
-    // - idx is already wrapped
-    double y0 = x->buf[wrapBufIndex(x, x->idx + 3)];
-    double y_1 = x->buf[wrapBufIndex(x, x->idx + 2)];
-    double y_2 = x->buf[wrapBufIndex(x, x->idx + 1)];
-    double y_3 = x->buf[x->idx];
-    double y = softcut::Interpolate::hermite<double>(x->phase, y_3, y_2, y_1, y0);
-    x->phase += x->inc;
-    while (x->phase > 1.0) { x->phase -= 1.0; }
-    return y;
-}
-
-
-void calcRate(t_colloquial *x) {
-    x->inc = x->rate / x->sr;
-    x->resamp.setRate(x->rate);
-}
-
-void setRate(t_colloquial *x, double val) {
-    if (val > 1.f) {
-        x->rate = 1.f;
-    } else {
-        x->rate = val;
-    }
-    calcRate(x);
-}
-
-void setWindow(t_colloquial *x, double val) {
-    if (val > 256.f) {
-        x->window = 256;
-    } else if (val < 0.f) {
-        x->window = 1;
-    } else {
-        x->window = (int)val;
-    }
-}
-
-void setSampleRate(t_colloquial *x, double val) {
-    x->sr = val;
-    calcRate(x);
-}
-
-///////////
-/// methods copied from SDK example
-void colloquial_perform64(t_colloquial *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
-void colloquial_dsp64(t_colloquial *x, t_object *dsp64s, short *count, double samplerate, long maxvectorsize, long flags);
-void *colloquial_new();
-void colloquial_free(t_colloquial *x);
-void colloquial_assist(t_colloquial *x, void *b, long m, long a, char *s);
-
-/// input methods
-
-void colloquial_rate(t_colloquial *x, double f)
-{
-    setRate(x, f);
-}
-
-void colloquial_window(t_colloquial *x, double f)
-{
-    setWindow(x, f);
-=======
 #define SOFTCUT_IO_BUF_FRAMES 1024
 
 typedef struct _softcut {
@@ -226,23 +127,12 @@ void softcut_level_slew_time(t_softcut *sc, double val) {
 void softcut_rate_slew_time(t_softcut *sc, double val) {
     post("softcut_rate_slew_time( %f )", val);
     sc->scv.setRateSlewTime(val);
->>>>>>> parent of b51289d... actually proper sample rate redection now
 }
 
 static t_class *softcut_class;
 
 void ext_main(void *r)
 {
-<<<<<<< HEAD
-    // declare class: single float argument
-    t_class *c = class_new("colloquial~", (method)colloquial_new, (method)colloquial_free, sizeof(t_colloquial), 0L, NULL, 0);
-    
-    //--- standard max smethods
-    class_addmethod(c, (method)colloquial_dsp64, "dsp64", A_CANT, 0);
-    class_addmethod(c, (method)colloquial_rate, "rate", A_FLOAT, 0);
-    class_addmethod(c, (method)colloquial_window, "window", A_FLOAT, 0);
-    class_addmethod(c, (method)colloquial_assist, "assist", A_CANT, 0);
-=======
     // declare class: single string argument (buffer reference)
     t_class *c = class_new("softcut~", (method)softcut_new, (method)softcut_free, sizeof(t_softcut), 0L, A_SYM, 0);
     
@@ -253,7 +143,6 @@ void ext_main(void *r)
     class_addmethod(c, (method)softcut_notify, "notify", A_CANT, 0);
     // set buffer
     class_addmethod(c, (method)softcut_set, "set", A_SYM, 0);
->>>>>>> parent of b51289d... actually proper sample rate redection now
     
     //--- softcut methods
     class_addmethod(c, (method)softcut_filter_fc, "filter_fc", A_FLOAT, 0);
@@ -286,30 +175,6 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
     t_double	*in = ins[0];
     t_double	*out = outs[0];
     
-<<<<<<< HEAD
-    while(sampleframes--) {
-        // currently, this returns how many samples were written.
-        // if rate < 1, nframes will either be zero or one.
-        // if rate > 1, nframes will be >= 1.
-        
-        double insamp = *in++;
-        int nframes = x->resamp.processFrame(insamp);
-        
-        // this returns a pointer to Resampler's output buffer.
-        // after `processFrame()`, the output buf contains N samples.
-        
-        // in softcut, we'd capture all these in a buffer, and interpolate playback separately.
-        // here, we just want to immediately "play back" at the same rate we "recorded" with.
-        
-        // write...
-        const double* resampBuf = x->resamp.output();
-        for(int i=0; i<nframes; ++i) {
-            writeToBuf(x, resampBuf[i]);
-        }
-        // read out the last value with interpolation
-        double outsamp = readFromBuf(x);
-        *out++ = outsamp;
-=======
     int			n = sampleframes;
     float		*tab;
     t_buffer_obj *buffer = buffer_ref_getobject(x->l_buffer_reference);
@@ -317,7 +182,6 @@ void softcut_perform64(t_softcut *x, t_object *dsp64, double **ins, long numins,
     tab = buffer_locksamples(buffer);
     if (!tab) {
         goto zero;
->>>>>>> parent of b51289d... actually proper sample rate redection now
     }
     
     // FIXME? assuming buffer is mono.
@@ -344,10 +208,6 @@ zero:
 
 void softcut_set(t_softcut *x, t_symbol *s)
 {
-<<<<<<< HEAD
-    dsp_add64(dsp64, (t_object *)x, (t_perfroutine64)colloquial_perform64, 0, NULL);
-    setSampleRate(x, samplerate);
-=======
     if (!x->l_buffer_reference) {
         x->l_buffer_reference = buffer_ref_new((t_object *)x, s);
     }
@@ -375,7 +235,6 @@ void softcut_dsp64(t_softcut *x, t_object *dsp64, short *count, double samplerat
     // there should be a small negative offset, putting rec head behind play head
     // should be just big enough to keep resampling windows apart
     x->scv.setRecOffset(-12.0 / samplerate);
->>>>>>> parent of b51289d... actually proper sample rate redection now
 }
 
 // this lets us double-click on softcut~ to open up the buffer~ it references
@@ -396,11 +255,7 @@ void softcut_assist(t_softcut *x, void *b, long m, long a, char *s)
     }
 }
 
-<<<<<<< HEAD
-void *colloquial_new()
-=======
 void *softcut_new(t_symbol *s, long chan)
->>>>>>> parent of b51289d... actually proper sample rate redection now
 {
     t_softcut *x = (t_softcut*) object_alloc(softcut_class);
     //  one signal input
@@ -408,14 +263,8 @@ void *softcut_new(t_symbol *s, long chan)
     // no other inlets...
     // one signal outlet
     outlet_new((t_object *)x, "signal");
-<<<<<<< HEAD
-    
-    setRate(x, 1.0f);
-    setWindow(x, 1);
-=======
     // set buffer reference using argument
     softcut_set(x, s);
->>>>>>> parent of b51289d... actually proper sample rate redection now
     
     return (x);
 }

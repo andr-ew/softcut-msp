@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "softcut~.cpp"
-            timestampString = "584919234.3022749"
+            timestampString = "584580133.896818"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "214"
@@ -19,6 +19,7 @@
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
+<<<<<<< HEAD
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
@@ -35,5 +36,7 @@
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
+=======
+>>>>>>> parent of b51289d... actually proper sample rate redection now
    </Breakpoints>
 </Bucket>

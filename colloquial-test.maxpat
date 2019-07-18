@@ -10,7 +10,11 @@
 		}
 ,
 		"classnamespace" : "box",
+<<<<<<< HEAD
 		"rect" : [ 118.0, 134.0, 745.0, 527.0 ],
+=======
+		"rect" : [ 169.0, 210.0, 745.0, 527.0 ],
+>>>>>>> parent of b51289d... actually proper sample rate redection now
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +43,7 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+<<<<<<< HEAD
 					"id" : "obj-11",
 					"maxclass" : "number",
 					"numinlets" : 1,
@@ -87,16 +92,32 @@
 			}
 , 			{
 				"box" : 				{
+=======
+>>>>>>> parent of b51289d... actually proper sample rate redection now
 					"format" : 6,
 					"id" : "obj-9",
 					"maxclass" : "flonum",
-					"maximum" : 1.0,
-					"minimum" : 0.0,
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
+<<<<<<< HEAD
 					"patching_rect" : [ 68.0, 249.0, 50.0, 22.0 ]
+=======
+					"patching_rect" : [ 84.0, 243.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 294.0, 321.0, 43.0, 22.0 ],
+					"text" : "cycle~"
+>>>>>>> parent of b51289d... actually proper sample rate redection now
 				}
 
 			}
@@ -106,7 +127,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 153.0, 437.0, 35.0, 22.0 ],
+					"patching_rect" : [ 153.0, 402.0, 35.0, 22.0 ],
 					"text" : "dac~"
 				}
 
@@ -120,6 +141,7 @@
 								"selection" : [ 0.163461538461538, 0.653846153846154 ],
 								"loop" : 1,
 								"content_state" : 								{
+<<<<<<< HEAD
 									"originallengthms" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"timestretch" : [ 0 ],
@@ -135,6 +157,23 @@
 									"slurtime" : [ 0.0 ],
 									"formantcorrection" : [ 0 ],
 									"followglobaltempo" : [ 0 ]
+=======
+									"formant" : [ 1.0 ],
+									"pitchshift" : [ 1.0 ],
+									"mode" : [ "basic" ],
+									"formantcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"pitchcorrection" : [ 0 ],
+									"originaltempo" : [ 120.0 ],
+									"slurtime" : [ 0.0 ],
+									"originallengthms" : [ 0.0 ],
+									"quality" : [ "basic" ],
+									"basictuning" : [ 440 ],
+									"timestretch" : [ 0 ],
+									"play" : [ 0 ],
+									"speed" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ]
+>>>>>>> parent of b51289d... actually proper sample rate redection now
 								}
 
 							}
@@ -147,6 +186,18 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
 					"patching_rect" : [ 139.0, 153.0, 150.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 153.0, 316.0, 66.0, 22.0 ],
+					"text" : "colloquial~"
 				}
 
 			}
@@ -177,6 +228,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"order" : 1,
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"order" : 0,
 					"source" : [ "obj-3", 0 ]
 				}
 

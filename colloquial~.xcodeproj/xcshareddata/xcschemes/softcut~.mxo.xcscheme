@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2FBBEAD608F335360078DB84"
-               BuildableName = "colloquial~.mxo"
-               BlueprintName = "colloquial~.mxo"
-               ReferencedContainer = "container:colloquial~.xcodeproj">
+               BuildableName = "softcut~.mxo"
+               BlueprintName = "softcut~.mxo"
+               ReferencedContainer = "container:softcut~.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2FBBEAD608F335360078DB84"
-            BuildableName = "colloquial~.mxo"
-            BlueprintName = "colloquial~.mxo"
-            ReferencedContainer = "container:colloquial~.xcodeproj">
+            BuildableName = "softcut~.mxo"
+            BlueprintName = "softcut~.mxo"
+            ReferencedContainer = "container:softcut~.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2FBBEAD608F335360078DB84"
-            BuildableName = "colloquial~.mxo"
-            BlueprintName = "colloquial~.mxo"
-            ReferencedContainer = "container:colloquial~.xcodeproj">
+            BuildableName = "softcut~.mxo"
+            BlueprintName = "softcut~.mxo"
+            ReferencedContainer = "container:softcut~.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

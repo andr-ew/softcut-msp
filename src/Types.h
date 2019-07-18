@@ -7,7 +7,7 @@
 
 namespace softcut {
 
-    typedef double sample_t;
+    typedef float sample_t;
     typedef double phase_t;
     typedef double rate_t;
 }

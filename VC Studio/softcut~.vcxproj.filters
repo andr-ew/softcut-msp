@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(C74SUPPORT)\max-includes\common\dllmain_win.c" />
+    <ClCompile Include="softcut~.cpp" />
+    <ClCompile Include="src\FadeCurves.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SoftCutHead.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SoftCutVoice.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SubHead.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Svf.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{33410a43-17f1-4ce9-9a6a-4c1fa10a51ed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Interpolate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LowpassBrickwall.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resampler.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoftClip.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoftCut.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoftCutHead.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoftCutVoice.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SubHead.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Svf.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TestBuffers.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Types.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

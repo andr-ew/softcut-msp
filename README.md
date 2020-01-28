@@ -13,11 +13,12 @@ using
 
 reference the softcut [luadocs](https://monome.github.io/norns/doc/modules/softcut.html) for the list of softcut commands. here they take the form of a message contaning: "`command value`".
 
+use the `get_position` message to send phase in ms out of 2nd outlet in place of phase-related commands
+
 TODO
 ========
 
 - help patcher
-- phase output
 - write-amplitude dead zone around rate==0.
 - soft clipper fixes (disabled in this version)
 
